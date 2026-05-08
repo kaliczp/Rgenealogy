@@ -3,8 +3,14 @@ Kalicz <- Kalicz[Kalicz$ID != "",]
 Kalicz$Born <- as.Date(Kalicz$Born)
 Kalicz$Kereszt <- as.Date(Kalicz$Kereszt)
 library(ggenealogy)
-KaliczClean <- Kalicz[,c(1:2,4)]
-colnames(KaliczClean) <- c("ID", "IDparent2", "Name")
-KaliczClean <- rbind(KaliczClean, Kalicz[,c(1,3,4)])
-colnames(KaliczClean) <- c("child", "parent", "Name")
-KaliczIG <- dfToIG(KaliczClean)
+
+KaliczF <- factor(c(Kalicz[,1],Kalicz[,2],Kalicz[,3]), Kalicz[,1], labels = make.unique(Kalicz[,4]))
+KaliczM <- matrix(as.character(KaliczF), ncol = 3)
+KaliczClean <- rbind(KaliczM[,1:2], KaliczM[,c(1,3)])
+KaliczClenaB <- cbind(KaliczClean, Kalicz[,"BornYear"])
+Kalicz.df <- as.data.frame(KaliczClenaB)
+colnames(Kalicz.df) <- c("child", "parent", "Born")
+
+KaliczIG <- dfToIG(Kalicz.df)
+pathKP_TGE <- getPath("Kalicz Péter", "Jósa Sára", KaliczIG, Kalicz.df, "Born")
+plotPath(pathKP_TGE, Kalicz.df, "Born")
