@@ -15,3 +15,9 @@ Kalicz.df$Born <- as.numeric(Kalicz.df$Born)
 KaliczIG <- dfToIG(Kalicz.df)
 pathKP_JS <- getPath("Kalicz Péter", "Jósa Sára", KaliczIG, Kalicz.df, "Born")
 plotPath(pathKP_TGE, Kalicz.df, "Born")
+plotPathOnAll(pathKP_JS, Kalicz.df, KaliczIG, "Born")
+
+
+plotAncDes("Kocsis Gizella Lenke", Kalicz.df, 10)
+
+pdf(width=14, height=21)
