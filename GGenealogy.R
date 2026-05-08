@@ -1,4 +1,7 @@
-Kalicz <- read.csv2("KaliczCsaládfa.csv")
+Kalicz <- read.csv("KaliczCS.csv")
+Kalicz <- Kalicz[Kalicz$ID != "",]
+Kalicz$Born <- as.Date(Kalicz$Born)
+Kalicz$Kereszt <- as.Date(Kalicz$Kereszt)
 library(ggenealogy)
 KaliczClean <- Kalicz[,c(1:2,4)]
 colnames(KaliczClean) <- c("ID", "IDparent2", "Name")
