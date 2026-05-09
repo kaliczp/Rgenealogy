@@ -14,7 +14,7 @@ Kalicz.df$Born <- as.numeric(Kalicz.df$Born)
 
 KaliczIG <- dfToIG(Kalicz.df)
 pathKP_JS <- getPath("Kalicz Péter", "Jósa Sára", KaliczIG, Kalicz.df, "Born")
-plotPath(pathKP_TGE, Kalicz.df, "Born")
+plotPath(pathKP_JS, Kalicz.df, "Born")
 plotPathOnAll(pathKP_JS, Kalicz.df, KaliczIG, "Born")
 
 
