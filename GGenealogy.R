@@ -19,5 +19,6 @@ plotPathOnAll(pathKP_JS, Kalicz.df, KaliczIG, "Born")
 
 
 plotAncDes("Kocsis Gizella Lenke", Kalicz.df, 10)
+plotAncDes("Kalicz Imre", Kalicz.df, 10)
 
 pdf(width=14, height=21)
