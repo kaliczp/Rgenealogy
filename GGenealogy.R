@@ -4,9 +4,12 @@ Kalicz$Born <- as.Date(Kalicz$Born)
 Kalicz$Kereszt <- as.Date(Kalicz$Kereszt)
 library(ggenealogy)
 
-KaliczF <- factor(c(Kalicz[,1],Kalicz[,2],Kalicz[,3]), Kalicz[,1], labels = make.unique(Kalicz[,4]))
+## Generate matrix first column child second parent with unique name
+KaliczF <- factor(c(Kalicz[, "ID"],Kalicz[, "IDparent1"],Kalicz[, "IDparent2"]), Kalicz[,"ID"], labels = make.unique(Kalicz[, "Name"]))
 KaliczM <- matrix(as.character(KaliczF), ncol = 3)
 KaliczClean <- rbind(KaliczM[,1:2], KaliczM[,c(1,3)])
+
+## Add birthyear to child
 KaliczClenaB <- cbind(KaliczClean, Kalicz[,"BornYear"])
 Kalicz.df <- as.data.frame(KaliczClenaB)
 colnames(Kalicz.df) <- c("child", "parent", "Born")
