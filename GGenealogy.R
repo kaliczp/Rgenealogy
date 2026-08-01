@@ -5,7 +5,13 @@ Kalicz$Kereszt <- as.Date(Kalicz$Kereszt)
 library(ggenealogy)
 
 ## Generate matrix first column child second parent with unique name
-KaliczF <- factor(c(Kalicz[, "ID"],Kalicz[, "IDparent1"],Kalicz[, "IDparent2"]), Kalicz[,"ID"], labels = make.unique(Kalicz[, "Name"]))
+KaliczF <- factor(c(Kalicz[, "ID"],
+                    Kalicz[, "IDparent1"],
+                    Kalicz[, "IDparent2"]
+                    ),
+                  levels = Kalicz[,"ID"],
+                  labels = make.unique(Kalicz[, "Name"])
+                  )
 KaliczM <- matrix(as.character(KaliczF), ncol = 3)
 KaliczClean <- rbind(KaliczM[,1:2], KaliczM[,c(1,3)])
 
