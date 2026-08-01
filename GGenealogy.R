@@ -1,5 +1,6 @@
-Kalicz <- read.csv("KaliczCS.csv")
-Kalicz <- Kalicz[Kalicz$ID != "",]
+library(readODS)
+KaliczRaw <- as.data.frame(read_ods("Családfa.ods"))
+Kalicz <- KaliczRaw[!is.na(KaliczRaw$ID),]
 Kalicz$Born <- as.Date(Kalicz$Born)
 Kalicz$Kereszt <- as.Date(Kalicz$Kereszt)
 library(ggenealogy)
